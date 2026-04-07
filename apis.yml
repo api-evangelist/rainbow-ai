@@ -7,8 +7,7 @@ type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags:
-  - API
+tags: []
 created: '2025-02-06'
 modified: '2025-02-06'
 url: >-
@@ -21,8 +20,7 @@ apis:
       Squeeze every drop of efficiency out of your operations withan API that knows
       exactly when and where it will rain or snow.
     humanURL: ' https://www.rainbow.ai/business'
-    tags:
-      - API
+    tags: []
     properties:
       - type: Documentation
         url: ' https://www.rainbow.ai/business'
