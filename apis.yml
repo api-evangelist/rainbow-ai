@@ -1,8 +1,8 @@
 aid: rainbow-ai
 name: Rainbow.AI
 description: >-
-  Squeeze every drop of efficiency out of your operations withan API that knows
-  exactly when and where it will rain or snow 
+  Squeeze every drop of efficiency out of your operations withan API that knows exactly
+  when and where it will rain or snow.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -18,8 +18,8 @@ apis:
   - aid: rainbow-ai:rainbow-ai
     name: Rainbow.AI
     description: >-
-      Squeeze every drop of efficiency out of your operations withan API that
-      knows exactly when and where it will rain or snow 
+      Squeeze every drop of efficiency out of your operations withan API that knows
+      exactly when and where it will rain or snow.
     humanURL: ' https://www.rainbow.ai/business'
     tags:
       - API
