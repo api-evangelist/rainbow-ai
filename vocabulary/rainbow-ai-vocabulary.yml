@@ -1,0 +1,93 @@
+vocabulary:
+  name: Rainbow.AI Vocabulary
+  description: >-
+    Domain vocabulary for Rainbow.AI's hyperlocal precipitation forecasting
+    APIs, covering meteorological concepts, data formats, and API conventions.
+  version: '1.0'
+  created: '2026-05-02'
+  terms:
+    - term: Nowcast
+      definition: >-
+        A short-range weather forecast covering minutes to hours ahead,
+        typically using radar extrapolation and machine learning rather than
+        numerical weather prediction models.
+      tags:
+        - Forecasting
+        - Core
+
+    - term: Precipitation
+      definition: >-
+        Any form of water falling from the sky, including rain, snow, sleet,
+        and freezing rain. Rainbow.AI categorizes precipitation by type and
+        intensity in mm/hour.
+      tags:
+        - Meteorology
+        - Core
+
+    - term: Hyperlocal
+      definition: >-
+        Weather predictions at very fine spatial resolution (1 km²), enabling
+        precise forecasts for a specific address or point of interest rather
+        than a broad region.
+      tags:
+        - Spatial
+        - Core
+
+    - term: Precipitation Intensity
+      definition: >-
+        The rate of precipitation in millimeters per hour (mm/hour). Common
+        categories: Light (< 2.5 mm/h), Moderate (2.5–7.6 mm/h),
+        Heavy (7.6–50 mm/h), Violent (> 50 mm/h).
+      tags:
+        - Measurement
+        - Meteorology
+
+    - term: Radar Reflectivity
+      definition: >-
+        A measure of how much energy is returned to a weather radar from
+        precipitation particles, measured in dBZ (decibels relative to Z).
+        Higher values indicate heavier precipitation.
+      tags:
+        - Radar
+        - Measurement
+
+    - term: XYZ Tiles
+      definition: >-
+        A standard map tile format using zoom/x/y coordinates, also known as
+        slippy map tiles. Rainbow.AI serves 256×256 PNG weather tiles in this
+        format for integration with Leaflet, Mapbox, Google Maps, and similar.
+      tags:
+        - Mapping
+        - Tiles
+
+    - term: Ocp-Apim-Subscription-Key
+      definition: >-
+        The HTTP request header used by Rainbow.AI for API authentication.
+        API keys are obtained from the developer.rainbow.ai portal.
+      tags:
+        - Authentication
+        - API
+
+    - term: Precipitation Type
+      definition: >-
+        Classification of precipitation: none, rain, snow, sleet, or freezing
+        rain. Determined by temperature profile and microphysical model.
+      tags:
+        - Classification
+        - Meteorology
+
+    - term: Global Coverage
+      definition: >-
+        Rainbow.AI's Nowcast and Tiles APIs provide precipitation data for
+        any location on Earth, not limited to specific regions.
+      tags:
+        - Coverage
+        - Core
+
+    - term: Update Frequency
+      definition: >-
+        Rainbow.AI data is refreshed approximately every 10 minutes, providing
+        near-real-time precipitation information.
+      tags:
+        - Data
+        - Freshness

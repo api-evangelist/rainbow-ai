@@ -1,0 +1,74 @@
+extends: spectral:oas
+rules:
+  rainbow-ai-api-key-auth:
+    description: Rainbow.AI APIs must use Ocp-Apim-Subscription-Key header or token query parameter for authentication
+    message: Security scheme must use apiKey type with Ocp-Apim-Subscription-Key header or token query param
+    severity: error
+    given: "$.components.securitySchemes[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            type:
+              enum: [apiKey]
+          required: [type]
+
+  rainbow-ai-coordinate-params:
+    description: Geolocation endpoints must include lat and lon query parameters
+    message: Endpoint accepting coordinates must have lat and lon query parameters
+    severity: warn
+    given: "$.paths[*].get.parameters[*]"
+    then:
+      function: truthy
+
+  rainbow-ai-tile-path-format:
+    description: Map tile paths must follow XYZ tiling scheme {z}/{x}/{y}
+    message: Tile paths must use {z}/{x}/{y} path parameter pattern
+    severity: warn
+    given: "$.paths"
+    then:
+      function: truthy
+
+  rainbow-ai-response-updated-at:
+    description: Weather data responses should include an updated_at timestamp
+    message: Weather response schemas should have an updated_at field
+    severity: warn
+    given: "$.components.schemas[*].properties"
+    then:
+      function: truthy
+
+  rainbow-ai-weather-tags:
+    description: All operations must have appropriate weather-domain tags
+    message: Operation must be tagged with at least one weather-domain tag
+    severity: warn
+    given: "$.paths[*][*].tags"
+    then:
+      function: truthy
+
+  rainbow-ai-operation-ids:
+    description: All operations must have unique operationId in camelCase
+    message: Operation must have an operationId
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  rainbow-ai-rate-limit-response:
+    description: All endpoints must document a 429 Too Many Requests response
+    message: API endpoint must include 429 response code
+    severity: warn
+    given: "$.paths[*].get.responses"
+    then:
+      field: "429"
+      function: truthy
+
+  rainbow-ai-pagination-not-required:
+    description: Rainbow.AI weather endpoints return bounded data sets and do not require pagination
+    message: Note - no pagination required for weather endpoints
+    severity: hint
+    given: "$.paths[*]"
+    then:
+      function: truthy

@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "rainbow": "https://api.rainbow.ai/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+
+    "NowcastResponse": "rainbow:NowcastResponse",
+    "ForecastPoint": "rainbow:ForecastPoint",
+    "RadarResponse": "rainbow:RadarResponse",
+    "RadarPoint": "rainbow:RadarPoint",
+    "Location": "schema:GeoCoordinates",
+
+    "location": {
+      "@id": "schema:geo",
+      "@type": "@id"
+    },
+    "lat": {
+      "@id": "geo:lat",
+      "@type": "xsd:decimal"
+    },
+    "lon": {
+      "@id": "geo:long",
+      "@type": "xsd:decimal"
+    },
+    "forecasts": {
+      "@id": "rainbow:forecasts",
+      "@container": "@list"
+    },
+    "radar_data": {
+      "@id": "rainbow:radarData",
+      "@container": "@list"
+    },
+    "timestamp": {
+      "@id": "schema:dateTime",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "precipitation_type": {
+      "@id": "rainbow:precipitationType"
+    },
+    "precipitation_intensity": {
+      "@id": "rainbow:precipitationIntensity",
+      "@type": "xsd:decimal"
+    },
+    "probability": {
+      "@id": "rainbow:probability",
+      "@type": "xsd:decimal"
+    },
+    "reflectivity": {
+      "@id": "rainbow:reflectivity",
+      "@type": "xsd:decimal"
+    }
+  }
+}

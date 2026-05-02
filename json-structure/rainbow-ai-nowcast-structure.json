@@ -1,0 +1,75 @@
+{
+  "title": "Rainbow.AI Nowcast API Structure",
+  "description": "JSON structure documentation for the Rainbow.AI Nowcast API response",
+  "version": "1.0",
+  "structures": [
+    {
+      "name": "NowcastResponse",
+      "description": "Top-level response from the Nowcast API",
+      "fields": [
+        {
+          "name": "location",
+          "type": "object",
+          "description": "Geographic coordinates queried",
+          "required": true,
+          "fields": [
+            {
+              "name": "lat",
+              "type": "number",
+              "description": "Latitude (-90 to 90)",
+              "required": true
+            },
+            {
+              "name": "lon",
+              "type": "number",
+              "description": "Longitude (-180 to 180)",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "forecasts",
+          "type": "array",
+          "description": "Minute-by-minute precipitation forecasts for up to 4 hours (up to 240 entries)",
+          "required": true,
+          "items": {
+            "name": "ForecastPoint",
+            "type": "object",
+            "fields": [
+              {
+                "name": "timestamp",
+                "type": "string (date-time)",
+                "description": "ISO 8601 timestamp for this forecast minute",
+                "required": true
+              },
+              {
+                "name": "precipitation_type",
+                "type": "string",
+                "description": "Type: none, rain, snow, sleet, or freezing_rain",
+                "required": true
+              },
+              {
+                "name": "precipitation_intensity",
+                "type": "number",
+                "description": "Intensity in mm/hour",
+                "required": true
+              },
+              {
+                "name": "probability",
+                "type": "number",
+                "description": "Probability 0.0-1.0",
+                "required": false
+              }
+            ]
+          }
+        },
+        {
+          "name": "updated_at",
+          "type": "string (date-time)",
+          "description": "Timestamp of the last data update",
+          "required": true
+        }
+      ]
+    }
+  ]
+}

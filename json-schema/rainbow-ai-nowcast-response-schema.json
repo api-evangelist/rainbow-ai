@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.rainbow.ai/schemas/nowcast-response",
+  "title": "Rainbow.AI Nowcast Response",
+  "description": "Schema for the Rainbow.AI Nowcast API response containing minute-by-minute precipitation forecasts",
+  "type": "object",
+  "required": ["location", "forecasts", "updated_at"],
+  "properties": {
+    "location": {
+      "$ref": "#/$defs/Location"
+    },
+    "forecasts": {
+      "type": "array",
+      "description": "Array of minute-by-minute precipitation forecasts for up to 4 hours",
+      "items": {
+        "$ref": "#/$defs/ForecastPoint"
+      },
+      "minItems": 1,
+      "maxItems": 240
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the last data update"
+    }
+  },
+  "$defs": {
+    "Location": {
+      "type": "object",
+      "title": "Location",
+      "description": "Geographic coordinates",
+      "required": ["lat", "lon"],
+      "properties": {
+        "lat": {
+          "type": "number",
+          "description": "Latitude in decimal degrees (-90 to 90)",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "lon": {
+          "type": "number",
+          "description": "Longitude in decimal degrees (-180 to 180)",
+          "minimum": -180,
+          "maximum": 180
+        }
+      }
+    },
+    "ForecastPoint": {
+      "type": "object",
+      "title": "Forecast Point",
+      "description": "A single minute precipitation forecast data point",
+      "required": ["timestamp", "precipitation_type", "precipitation_intensity"],
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp for this forecast minute"
+        },
+        "precipitation_type": {
+          "type": "string",
+          "description": "Type of precipitation expected",
+          "enum": ["none", "rain", "snow", "sleet", "freezing_rain"]
+        },
+        "precipitation_intensity": {
+          "type": "number",
+          "description": "Precipitation intensity in mm/hour",
+          "minimum": 0
+        },
+        "probability": {
+          "type": "number",
+          "description": "Probability of precipitation occurring (0.0 to 1.0)",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

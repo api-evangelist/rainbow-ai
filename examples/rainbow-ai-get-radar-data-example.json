@@ -1,0 +1,36 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.rainbow.ai/v1/weather/radar?lat=40.7128&lon=-74.0060",
+    "headers": {
+      "Ocp-Apim-Subscription-Key": "YOUR_API_KEY"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "location": {
+        "lat": 40.7128,
+        "lon": -74.0060
+      },
+      "radar_data": [
+        {
+          "timestamp": "2026-05-02T11:45:00Z",
+          "reflectivity": 35.2,
+          "precipitation_type": "rain"
+        },
+        {
+          "timestamp": "2026-05-02T11:50:00Z",
+          "reflectivity": 38.7,
+          "precipitation_type": "rain"
+        },
+        {
+          "timestamp": "2026-05-02T11:55:00Z",
+          "reflectivity": 41.3,
+          "precipitation_type": "rain"
+        }
+      ],
+      "updated_at": "2026-05-02T11:58:00Z"
+    }
+  }
+}
