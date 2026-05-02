@@ -1,15 +1,21 @@
 aid: rainbow-ai
 name: Rainbow.AI
 description: >-
-  Squeeze every drop of efficiency out of your operations withan API that knows exactly
-  when and where it will rain or snow.
+  Rainbow.AI provides hyperlocal precipitation forecasting APIs that deliver
+  minute-by-minute rain and snow predictions to help businesses optimize
+  weather-sensitive operations.
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-tags: []
+tags:
+  - Weather
+  - Precipitation
+  - Forecasting
+  - Nowcast
+  - Radar
 created: '2025-02-06'
-modified: '2025-02-06'
+modified: '2026-04-28'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/rainbow-ai/refs/heads/main/apis.yml
 specificationVersion: '0.19'
@@ -17,13 +23,31 @@ apis:
   - aid: rainbow-ai:rainbow-ai
     name: Rainbow.AI
     description: >-
-      Squeeze every drop of efficiency out of your operations withan API that knows
-      exactly when and where it will rain or snow.
-    humanURL: ' https://www.rainbow.ai/business'
-    tags: []
+      Rainbow.AI offers hyperlocal precipitation APIs including a Global Nowcast
+      API for minute-by-minute precipitation forecasts up to four hours ahead at
+      1 km resolution, a Global Tiles API for weather map tiles, and real-time
+      and historical radar data services.
+    humanURL: https://www.rainbow.ai/business
+    baseURL: https://api.rainbow.ai/v1
+    tags:
+      - Weather
+      - Precipitation
+      - Nowcast
+      - Radar
     properties:
       - type: Documentation
-        url: ' https://www.rainbow.ai/business'
+        url: https://doc.rainbow.ai
+      - type: SignUp
+        url: https://developer.rainbow.ai/
+      - type: Pricing
+        url: https://www.rainbow.ai/business
+common:
+  - type: Website
+    url: https://www.rainbow.ai
+  - type: Documentation
+    url: https://doc.rainbow.ai
+  - type: SignUp
+    url: https://developer.rainbow.ai/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

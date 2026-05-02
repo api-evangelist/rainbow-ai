@@ -1,38 +1,56 @@
 # Rainbow.AI (rainbow-ai)
-Squeeze every drop of efficiency out of your operations withan API that knows exactly when and where it will rain or snow 
+
+Rainbow.AI provides hyperlocal precipitation forecasting APIs that deliver minute-by-minute rain and snow predictions to help businesses optimize weather-sensitive operations.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/rainbow-ai/refs/heads/main/apis.yml)
 
 ## Scope
 
-- **Type:** Index 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - API
+- Weather
+- Precipitation
+- Forecasting
+- Nowcast
+- Radar
 
 ## Timestamps
 
-- **Created:** 2025-02-06 
-- **Modified:** 2025-02-06 
+- **Created:** 2025-02-06
+- **Modified:** 2026-04-28
 
 ## APIs
 
 ### Rainbow.AI
-Squeeze every drop of efficiency out of your operations withan API that knows exactly when and where it will rain or snow 
 
-**Human URL:** [ https://www.rainbow.ai/business]( https://www.rainbow.ai/business)
+Rainbow.AI offers hyperlocal precipitation APIs including a Global Nowcast API for minute-by-minute precipitation forecasts up to four hours ahead at 1 km resolution, a Global Tiles API for weather map tiles, and real-time and historical radar data services.
 
+**Human URL:** [https://www.rainbow.ai/business](https://www.rainbow.ai/business)
 
-#### Tags:
+**Base URL:** `https://api.rainbow.ai/v1`
 
- - API
+#### Tags
+
+- Weather
+- Precipitation
+- Nowcast
+- Radar
 
 #### Properties
 
-- [Documentation]( https://www.rainbow.ai/business)
+- [Documentation](https://doc.rainbow.ai)
+- [SignUp](https://developer.rainbow.ai/)
+- [Pricing](https://www.rainbow.ai/business)
+
+## Common Properties
+
+- [Website](https://www.rainbow.ai)
+- [Documentation](https://doc.rainbow.ai)
+- [SignUp](https://developer.rainbow.ai/)
 
 ## Maintainers
 
