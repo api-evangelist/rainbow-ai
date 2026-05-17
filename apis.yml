@@ -84,7 +84,7 @@ common:
     url: https://www.rainbow.ai/business
   - type: TermsOfService
     url: https://developer.rainbow.ai/terms-of-service
-  - type: Status
+  - type: StatusPage
     url: https://status.rainbow.ai
   - type: SpectralRules
     url: rules/rainbow-ai-rules.yml
