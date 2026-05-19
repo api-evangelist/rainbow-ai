@@ -1,0 +1,100 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Rainbow.AI Tiles API — Snapshots
+  description: 'Rainbow.AI Tiles API — Snapshots. 1 operations. Lead operation: Get Map Snapshot. Self-contained Naftiko capability
+    covering one Rainbow Ai business surface.'
+  tags:
+  - Rainbow Ai
+  - Snapshots
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RAINBOW_AI_API_KEY: RAINBOW_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tiles-snapshots
+    baseUri: https://api.rainbow.ai/v1
+    description: Rainbow.AI Tiles API — Snapshots business capability. Self-contained, no shared references.
+    resources:
+    - name: map-snapshot
+      path: /map/snapshot
+      operations:
+      - name: getmapsnapshot
+        method: GET
+        description: Get Map Snapshot
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: bbox
+          in: query
+          type: string
+          description: 'Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat'
+          required: true
+        - name: width
+          in: query
+          type: integer
+          description: Output image width in pixels
+        - name: height
+          in: query
+          type: integer
+          description: Output image height in pixels
+        - name: timestamp
+          in: query
+          type: string
+          description: ISO 8601 timestamp for the desired forecast time
+    authentication:
+      type: apikey
+      key: Ocp-Apim-Subscription-Key
+      value: '{{env.RAINBOW_AI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: tiles-snapshots-rest
+    port: 8080
+    description: REST adapter for Rainbow.AI Tiles API — Snapshots. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/map/snapshot
+      name: map-snapshot
+      description: REST surface for map-snapshot.
+      operations:
+      - method: GET
+        name: getmapsnapshot
+        description: Get Map Snapshot
+        call: tiles-snapshots.getmapsnapshot
+        with:
+          bbox: rest.bbox
+          width: rest.width
+          height: rest.height
+          timestamp: rest.timestamp
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tiles-snapshots-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Rainbow.AI Tiles API — Snapshots. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-map-snapshot
+      description: Get Map Snapshot
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tiles-snapshots.getmapsnapshot
+      with:
+        bbox: tools.bbox
+        width: tools.width
+        height: tools.height
+        timestamp: tools.timestamp
+      outputParameters:
+      - type: object
+        mapping: $.

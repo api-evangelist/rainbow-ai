@@ -1,0 +1,89 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Rainbow.AI Nowcast API — Radar
+  description: 'Rainbow.AI Nowcast API — Radar. 1 operations. Lead operation: Get Radar Data. Self-contained Naftiko capability
+    covering one Rainbow Ai business surface.'
+  tags:
+  - Rainbow Ai
+  - Radar
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RAINBOW_AI_API_KEY: RAINBOW_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nowcast-radar
+    baseUri: https://api.rainbow.ai/v1
+    description: Rainbow.AI Nowcast API — Radar business capability. Self-contained, no shared references.
+    resources:
+    - name: weather-radar
+      path: /weather/radar
+      operations:
+      - name: getradardata
+        method: GET
+        description: Get Radar Data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: lat
+          in: query
+          type: number
+          description: Latitude of the location (-90 to 90)
+          required: true
+        - name: lon
+          in: query
+          type: number
+          description: Longitude of the location (-180 to 180)
+          required: true
+    authentication:
+      type: apikey
+      key: Ocp-Apim-Subscription-Key
+      value: '{{env.RAINBOW_AI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: nowcast-radar-rest
+    port: 8080
+    description: REST adapter for Rainbow.AI Nowcast API — Radar. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/weather/radar
+      name: weather-radar
+      description: REST surface for weather-radar.
+      operations:
+      - method: GET
+        name: getradardata
+        description: Get Radar Data
+        call: nowcast-radar.getradardata
+        with:
+          lat: rest.lat
+          lon: rest.lon
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nowcast-radar-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Rainbow.AI Nowcast API — Radar. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-radar-data
+      description: Get Radar Data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nowcast-radar.getradardata
+      with:
+        lat: tools.lat
+        lon: tools.lon
+      outputParameters:
+      - type: object
+        mapping: $.

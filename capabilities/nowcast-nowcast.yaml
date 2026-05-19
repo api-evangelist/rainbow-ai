@@ -1,0 +1,95 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Rainbow.AI Nowcast API — Nowcast
+  description: 'Rainbow.AI Nowcast API — Nowcast. 1 operations. Lead operation: Get Precipitation Nowcast. Self-contained
+    Naftiko capability covering one Rainbow Ai business surface.'
+  tags:
+  - Rainbow Ai
+  - Nowcast
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RAINBOW_AI_API_KEY: RAINBOW_AI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nowcast-nowcast
+    baseUri: https://api.rainbow.ai/v1
+    description: Rainbow.AI Nowcast API — Nowcast business capability. Self-contained, no shared references.
+    resources:
+    - name: weather-nowcast
+      path: /weather/nowcast
+      operations:
+      - name: getnowcast
+        method: GET
+        description: Get Precipitation Nowcast
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: lat
+          in: query
+          type: number
+          description: Latitude of the location (-90 to 90)
+          required: true
+        - name: lon
+          in: query
+          type: number
+          description: Longitude of the location (-180 to 180)
+          required: true
+        - name: timezone
+          in: query
+          type: string
+          description: IANA timezone identifier for timestamp formatting (e.g., America/New_York)
+    authentication:
+      type: apikey
+      key: Ocp-Apim-Subscription-Key
+      value: '{{env.RAINBOW_AI_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: nowcast-nowcast-rest
+    port: 8080
+    description: REST adapter for Rainbow.AI Nowcast API — Nowcast. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/weather/nowcast
+      name: weather-nowcast
+      description: REST surface for weather-nowcast.
+      operations:
+      - method: GET
+        name: getnowcast
+        description: Get Precipitation Nowcast
+        call: nowcast-nowcast.getnowcast
+        with:
+          lat: rest.lat
+          lon: rest.lon
+          timezone: rest.timezone
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nowcast-nowcast-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Rainbow.AI Nowcast API — Nowcast. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-precipitation-nowcast
+      description: Get Precipitation Nowcast
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nowcast-nowcast.getnowcast
+      with:
+        lat: tools.lat
+        lon: tools.lon
+        timezone: tools.timezone
+      outputParameters:
+      - type: object
+        mapping: $.
