@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rainbow.AI Tiles API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Weather Map Tile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rainbow.ai/v1/map/tile/:z/:x/:y",
+            "params": [
+              {
+                "name": "z",
+                "value": "",
+                "type": "path",
+                "description": "Zoom level (0-18)"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "Tile X coordinate"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Tile Y coordinate"
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the desired forecast time. If omitted, returns the current precipitation tile."
+              },
+              {
+                "name": "layer",
+                "value": "",
+                "type": "query",
+                "description": "The weather layer type to render"
+              }
+            ]
+          },
+          "docs": "Returns a 256x256 PNG weather map tile at the specified zoom level and tile coordinates using the XYZ tiling scheme. Tiles show precipitation forecasts and can be overlaid on any mapping library (Leaflet, Mapbox, Google Maps, etc.)."
+        },
+        {
+          "info": {
+            "name": "Get Available Tile Timestamps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rainbow.ai/v1/map/timestamps"
+          },
+          "docs": "Returns a list of available timestamps for which weather tile data is available. Use this to build time-slider controls for animated weather visualizations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Snapshots",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Map Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rainbow.ai/v1/map/snapshot",
+            "params": [
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat"
+              },
+              {
+                "name": "width",
+                "value": "",
+                "type": "query",
+                "description": "Output image width in pixels"
+              },
+              {
+                "name": "height",
+                "value": "",
+                "type": "query",
+                "description": "Output image height in pixels"
+              },
+              {
+                "name": "timestamp",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the desired forecast time"
+              }
+            ]
+          },
+          "docs": "Returns a static precipitation map image for a given bounding box, useful for generating weather map previews or thumbnails without a full mapping library integration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

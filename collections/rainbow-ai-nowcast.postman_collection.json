@@ -1,0 +1,551 @@
+{
+  "item": [
+    {
+      "id": "9f61a27c-8753-4ac6-a1f4-f6148b944e77",
+      "name": "Nowcast",
+      "description": {
+        "content": "Minute-by-minute precipitation forecasting operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a7678df-1c5a-463a-8b15-20b2bf5646e6",
+          "name": "Get Precipitation Nowcast",
+          "request": {
+            "name": "Get Precipitation Nowcast",
+            "description": {
+              "content": "Returns minute-by-minute precipitation forecast for the next 4 hours at a given latitude and longitude, at 1 km spatial resolution. Data is updated every 10 minutes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "weather",
+                "nowcast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude of the location (-90 to 90)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude of the location (-180 to 180)"
+                },
+                {
+                  "disabled": false,
+                  "key": "timezone",
+                  "value": "<string>",
+                  "description": "IANA timezone identifier for timestamp formatting (e.g., America/New_York)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51c15045-60d5-4242-9019-8b0be21bb649",
+              "name": "Successful nowcast forecast response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "nowcast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "40.7128"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-74.006"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "America/New_York"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": {\n    \"lat\": 3055.395906237531,\n    \"lon\": 2657.7415752025013\n  },\n  \"forecasts\": [\n    {\n      \"timestamp\": \"1988-04-09T08:09:55.199Z\",\n      \"precipitation_type\": \"rain\",\n      \"precipitation_intensity\": 955.5089049505605,\n      \"probability\": 0.31940651375794193\n    },\n    {\n      \"timestamp\": \"1987-11-26T18:42:30.869Z\",\n      \"precipitation_type\": \"none\",\n      \"precipitation_intensity\": 1173.6092620065474,\n      \"probability\": 0.3509167729280275\n    }\n  ],\n  \"updated_at\": \"1949-04-12T04:56:31.397Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "459376f2-aa33-494c-aad1-4988e7db661e",
+              "name": "Unauthorized - missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "nowcast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "40.7128"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-74.006"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "America/New_York"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 8305\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6abcbfb-311d-4389-a16d-114a197bb315",
+              "name": "Unprocessable Entity - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "nowcast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "40.7128"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-74.006"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "America/New_York"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 8305\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "306ff3ec-43f6-4ce9-a066-7a78d975120c",
+              "name": "Too Many Requests - rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "nowcast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "40.7128"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-74.006"
+                    },
+                    {
+                      "key": "timezone",
+                      "value": "America/New_York"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 8305\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "356925e4-4a64-49ae-81a6-61135f80159d",
+      "name": "Radar",
+      "description": {
+        "content": "Real-time radar data operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "85604897-c353-4f83-867e-3f79f9c5a07a",
+          "name": "Get Radar Data",
+          "request": {
+            "name": "Get Radar Data",
+            "description": {
+              "content": "Returns real-time and historical radar data for a specific location, providing precipitation intensity and type information from radar observations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "weather",
+                "radar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude of the location (-90 to 90)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude of the location (-180 to 180)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32ce9376-b279-4284-ab32-2634f589d17a",
+              "name": "Successful radar data response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "radar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "40.7128"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-74.006"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"location\": {\n    \"lat\": 4723.454604597959,\n    \"lon\": 2420.73980749026\n  },\n  \"radar_data\": [\n    {\n      \"timestamp\": \"2005-10-28T16:52:34.336Z\",\n      \"reflectivity\": 9666.938748131563,\n      \"precipitation_type\": \"snow\"\n    },\n    {\n      \"timestamp\": \"1947-12-24T00:58:10.442Z\",\n      \"reflectivity\": 4335.519618801698,\n      \"precipitation_type\": \"snow\"\n    }\n  ],\n  \"updated_at\": \"1992-05-24T12:53:18.315Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1b8e62e-195e-4cf7-a2d4-cb4f155f75ad",
+              "name": "Unauthorized - missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "radar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "40.7128"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-74.006"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 8305\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d49c2277-4309-48e8-afa4-b7b0d0faf77a",
+              "name": "Too Many Requests - rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "weather",
+                    "radar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "40.7128"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "-74.006"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 8305\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.rainbow.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0d14d649-97f0-427f-8852-b120d6b7e0ae",
+    "name": "Rainbow.AI Nowcast API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Rainbow.AI Nowcast API delivers hyperlocal precipitation forecasts with minute-by-minute predictions for the next 4 hours at 1 km spatial resolution. It returns precipitation type and intensity for any global coordinate, updated every 10 minutes. Authentication is via API key in header or query parameter.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,13 +1,8 @@
-# Rainbow.AI
+# Rainbow.AI (rainbow-ai)
 
 Rainbow.AI provides hyperlocal precipitation forecasting APIs that deliver minute-by-minute rain and snow predictions at 1 km resolution, helping businesses and developers optimize weather-sensitive operations with accurate nowcast and map tile data globally.
 
-- **Website:** [rainbow.ai](https://www.rainbow.ai)
-- **Developer Portal:** [developer.rainbow.ai](https://developer.rainbow.ai/)
-- **Documentation:** [doc.rainbow.ai](https://doc.rainbow.ai)
-- **Pricing:** [rainbow.ai/business](https://www.rainbow.ai/business)
-- **Terms of Service:** [developer.rainbow.ai/terms-of-service](https://developer.rainbow.ai/terms-of-service)
-- **Status:** [status.rainbow.ai](https://status.rainbow.ai)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/rainbow-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/rainbow-ai/refs/heads/main/apis.yml)
 
 ## Scope
 
@@ -17,70 +12,83 @@ Rainbow.AI provides hyperlocal precipitation forecasting APIs that deliver minut
 
 ## Tags
 
-Weather, Precipitation, Forecasting, Nowcast, Radar, Tiles, Geospatial
+- Weather
+- Precipitation
+- Forecasting
+- Nowcast
+- Radar
+- Tiles
+- Geospatial
+
+## Timestamps
+
+- **Created:** 2025-02-06
+- **Modified:** 2026-05-19
 
 ## APIs
 
-### Nowcast API
-Minute-by-minute precipitation forecasts for the next 4 hours at 1 km resolution for any global location, updated every 10 minutes.
+### Rainbow.AI Nowcast API
 
+The Nowcast API delivers hyperlocal precipitation forecasts with minute-by-minute predictions for the next 4 hours at 1 km spatial resolution. It returns precipitation type and intensity for any global coordinate, updated every 10 minutes.
+
+- **Human URL:** [https://doc.rainbow.ai](https://doc.rainbow.ai)
 - **Base URL:** `https://api.rainbow.ai/v1`
-- **Authentication:** API key via `Ocp-Apim-Subscription-Key` header or `token` query parameter
-- **OpenAPI:** [openapi/rainbow-ai-nowcast-openapi.yml](openapi/rainbow-ai-nowcast-openapi.yml)
 
-### Tiles API
-Global 256x256 PNG weather map tiles via XYZ CDN for precipitation visualization, supporting real-time and forecasted layers.
+#### Tags
 
+- Weather
+- Nowcast
+- Precipitation
+- Forecasting
+
+#### Properties
+
+- [Documentation](https://doc.rainbow.ai)
+- [OpenAPI](openapi/rainbow-ai-nowcast-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/rainbow-ai-nowcast.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/rainbow-ai-nowcast.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/rainbow-ai-nowcast-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/rainbow-ai-nowcast-structure.json)
+- [Sign Up](https://developer.rainbow.ai/)
+- [Pricing](https://www.rainbow.ai/business)
+
+### Rainbow.AI Tiles API
+
+The Tiles API provides global cloud coverage map tiles with high-resolution weather visualization data (256x256 tiles) delivered via XYZ CDN. Supports real-time and forecasted precipitation layers, updated every 10 minutes.
+
+- **Human URL:** [https://doc.rainbow.ai](https://doc.rainbow.ai)
 - **Base URL:** `https://api.rainbow.ai/v1`
-- **Authentication:** API key via `Ocp-Apim-Subscription-Key` header or `token` query parameter
-- **OpenAPI:** [openapi/rainbow-ai-tiles-openapi.yml](openapi/rainbow-ai-tiles-openapi.yml)
 
-## Artifacts
+#### Tags
 
-### OpenAPI Specifications
-| File | Description |
-|---|---|
-| [openapi/rainbow-ai-nowcast-openapi.yml](openapi/rainbow-ai-nowcast-openapi.yml) | Nowcast API — precipitation forecasting |
-| [openapi/rainbow-ai-tiles-openapi.yml](openapi/rainbow-ai-tiles-openapi.yml) | Tiles API — weather map tiles |
+- Weather
+- Tiles
+- Mapping
+- Visualization
+- Geospatial
 
-### JSON Schema
-| File | Description |
-|---|---|
-| [json-schema/rainbow-ai-nowcast-response-schema.json](json-schema/rainbow-ai-nowcast-response-schema.json) | Nowcast response schema |
+#### Properties
 
-### JSON Structure
-| File | Description |
-|---|---|
-| [json-structure/rainbow-ai-nowcast-structure.json](json-structure/rainbow-ai-nowcast-structure.json) | Nowcast response structure documentation |
+- [Documentation](https://doc.rainbow.ai)
+- [OpenAPI](openapi/rainbow-ai-tiles-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/rainbow-ai-tiles.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/rainbow-ai-tiles.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Sign Up](https://developer.rainbow.ai/)
+- [Pricing](https://www.rainbow.ai/business)
 
-### JSON-LD
-| File | Description |
-|---|---|
-| [json-ld/rainbow-ai-context.jsonld](json-ld/rainbow-ai-context.jsonld) | Linked data context mapping |
+## Common Properties
 
-### Examples
-| File | Description |
-|---|---|
-| [examples/rainbow-ai-get-nowcast-example.json](examples/rainbow-ai-get-nowcast-example.json) | Nowcast API request/response example |
-| [examples/rainbow-ai-get-map-tile-example.json](examples/rainbow-ai-get-map-tile-example.json) | Map tile request example |
-| [examples/rainbow-ai-get-radar-data-example.json](examples/rainbow-ai-get-radar-data-example.json) | Radar data request/response example |
-
-### Rules
-| File | Description |
-|---|---|
-| [rules/rainbow-ai-rules.yml](rules/rainbow-ai-rules.yml) | Spectral ruleset for Rainbow.AI API conventions |
-
-### Capabilities
-| File | Description |
-|---|---|
-| [capabilities/weather-intelligence.yaml](capabilities/weather-intelligence.yaml) | Unified weather intelligence workflow (Nowcast + Tiles) |
-| [capabilities/shared/nowcast.yaml](capabilities/shared/nowcast.yaml) | Shared Nowcast API definition |
-| [capabilities/shared/tiles.yaml](capabilities/shared/tiles.yaml) | Shared Tiles API definition |
-
-### Vocabulary
-| File | Description |
-|---|---|
-| [vocabulary/rainbow-ai-vocabulary.yml](vocabulary/rainbow-ai-vocabulary.yml) | Meteorological and API domain vocabulary |
+- [GitHub Organization](https://github.com/Rainbow-AI)
+- [LinkedIn](https://www.linkedin.com/company/rainbowai)
+- [Website](https://www.rainbow.ai)
+- [Documentation](https://doc.rainbow.ai)
+- [Sign Up](https://developer.rainbow.ai/)
+- [Pricing](https://www.rainbow.ai/business)
+- [Terms of Service](https://developer.rainbow.ai/terms-of-service)
+- [Status Page](https://status.rainbow.ai)
+- [Spectral Rules](rules/rainbow-ai-rules.yml)
+- [JSON-LD](json-ld/rainbow-ai-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Vocabulary](vocabulary/rainbow-ai-vocabulary.yml)
 
 ## Maintainers
 

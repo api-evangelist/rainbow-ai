@@ -1,0 +1,875 @@
+{
+  "item": [
+    {
+      "id": "86b56a6f-80a7-4442-b8e4-81b150e33103",
+      "name": "Tiles",
+      "description": {
+        "content": "Weather map tile retrieval operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "70fb8fe9-ac7c-428b-bf05-c21feffad054",
+          "name": "Get Weather Map Tile",
+          "request": {
+            "name": "Get Weather Map Tile",
+            "description": {
+              "content": "Returns a 256x256 PNG weather map tile at the specified zoom level and tile coordinates using the XYZ tiling scheme. Tiles show precipitation forecasts and can be overlaid on any mapping library (Leaflet, Mapbox, Google Maps, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "map",
+                "tile",
+                ":z",
+                ":x",
+                ":y"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<dateTime>",
+                  "description": "ISO 8601 timestamp for the desired forecast time. If omitted, returns the current precipitation tile."
+                },
+                {
+                  "disabled": false,
+                  "key": "layer",
+                  "value": "precipitation",
+                  "description": "The weather layer type to render"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "z",
+                  "description": "(Required) Zoom level (0-18)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "x",
+                  "description": "(Required) Tile X coordinate"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "y",
+                  "description": "(Required) Tile Y coordinate"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "823ab058-b5d7-483f-b904-71f5330001a0",
+              "name": "PNG weather map tile image",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "tile",
+                    ":z",
+                    ":x",
+                    ":y"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2026-05-02T12:00:00Z"
+                    },
+                    {
+                      "key": "layer",
+                      "value": "precipitation"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Zoom level (0-18)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile X coordinate"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Tile Y coordinate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5eb0047-8698-4b4e-af51-3af4125c9a2e",
+              "name": "Unauthorized - missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "tile",
+                    ":z",
+                    ":x",
+                    ":y"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2026-05-02T12:00:00Z"
+                    },
+                    {
+                      "key": "layer",
+                      "value": "precipitation"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Zoom level (0-18)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile X coordinate"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Tile Y coordinate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 6342\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08de60b6-d347-490f-a219-20eae0da581b",
+              "name": "Tile not found for the given coordinates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "tile",
+                    ":z",
+                    ":x",
+                    ":y"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2026-05-02T12:00:00Z"
+                    },
+                    {
+                      "key": "layer",
+                      "value": "precipitation"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Zoom level (0-18)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile X coordinate"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Tile Y coordinate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 6342\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28464b5f-41a8-4f1d-aebf-28715c5b78c6",
+              "name": "Too Many Requests - rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "tile",
+                    ":z",
+                    ":x",
+                    ":y"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "2026-05-02T12:00:00Z"
+                    },
+                    {
+                      "key": "layer",
+                      "value": "precipitation"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Zoom level (0-18)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile X coordinate"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Tile Y coordinate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 6342\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb39b039-3197-4b16-a7ca-0516909363e5",
+          "name": "Get Available Tile Timestamps",
+          "request": {
+            "name": "Get Available Tile Timestamps",
+            "description": {
+              "content": "Returns a list of available timestamps for which weather tile data is available. Use this to build time-slider controls for animated weather visualizations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "map",
+                "timestamps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dae2c5ad-4f8d-414b-8737-8cde4753ff9d",
+              "name": "List of available tile timestamps",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "timestamps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"past\": [\n    \"1994-09-10T20:03:51.094Z\",\n    \"2023-02-26T19:20:29.485Z\"\n  ],\n  \"future\": [\n    \"2011-04-17T21:14:07.509Z\",\n    \"1999-09-16T20:58:46.320Z\"\n  ],\n  \"updated_at\": \"2014-08-24T10:45:20.222Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1da543b9-dde3-4209-a20a-c5b38acd6f0d",
+              "name": "Unauthorized - missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "timestamps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 6342\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "29440b7a-dd52-4a49-8877-957bd73b144e",
+      "name": "Snapshots",
+      "description": {
+        "content": "Map snapshot and static image operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "deeb35d3-a47a-4c0c-bfae-616802fb1ac4",
+          "name": "Get Map Snapshot",
+          "request": {
+            "name": "Get Map Snapshot",
+            "description": {
+              "content": "Returns a static precipitation map image for a given bounding box, useful for generating weather map previews or thumbnails without a full mapping library integration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "map",
+                "snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<string>",
+                  "description": "(Required) Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat"
+                },
+                {
+                  "disabled": false,
+                  "key": "width",
+                  "value": "256",
+                  "description": "Output image width in pixels"
+                },
+                {
+                  "disabled": false,
+                  "key": "height",
+                  "value": "256",
+                  "description": "Output image height in pixels"
+                },
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<dateTime>",
+                  "description": "ISO 8601 timestamp for the desired forecast time"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "036f4515-aeb0-44da-badf-6943e4285bbb",
+              "name": "Static PNG precipitation map snapshot",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-74.1,40.6,-73.9,40.8"
+                    },
+                    {
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cb81087-d471-48e2-886e-3380432f881b",
+              "name": "Unauthorized - missing or invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-74.1,40.6,-73.9,40.8"
+                    },
+                    {
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 6342\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "af7e61f0-ab24-4e6b-9eb5-e28c228491fa",
+              "name": "Unprocessable Entity - invalid bounding box or parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-74.1,40.6,-73.9,40.8"
+                    },
+                    {
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 6342\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71169777-cb61-4967-b153-c5f2ee7b73dd",
+              "name": "Too Many Requests - rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-74.1,40.6,-73.9,40.8"
+                    },
+                    {
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Ocp-Apim-Subscription-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"status\": 6342\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.rainbow.ai/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c2779d27-0f80-43a8-a13e-1a16a2cf0e51",
+    "name": "Rainbow.AI Tiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Rainbow.AI Tiles API provides global cloud coverage map tiles with high-resolution weather visualization data (256x256 tiles) delivered via XYZ CDN. Supports real-time and forecasted precipitation layers, updated every 10 minutes. Ideal for map-based applications, dashboards, and spatial interfaces.",
+      "type": "text/plain"
+    }
+  }
+}
