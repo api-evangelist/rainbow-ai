@@ -43,7 +43,7 @@ apis:
         url: json-schema/rainbow-ai-nowcast-response-schema.json
       - type: JSONStructure
         url: json-structure/rainbow-ai-nowcast-structure.json
-      - type: SignUp
+      - type: Signup
         url: https://developer.rainbow.ai/
       - type: Pricing
         url: https://www.rainbow.ai/business
@@ -65,7 +65,7 @@ apis:
         url: https://doc.rainbow.ai
       - type: OpenAPI
         url: openapi/rainbow-ai-tiles-openapi.yml
-      - type: SignUp
+      - type: Signup
         url: https://developer.rainbow.ai/
       - type: Pricing
         url: https://www.rainbow.ai/business
@@ -78,7 +78,7 @@ common:
     url: https://www.rainbow.ai
   - type: Documentation
     url: https://doc.rainbow.ai
-  - type: SignUp
+  - type: Signup
     url: https://developer.rainbow.ai/
   - type: Pricing
     url: https://www.rainbow.ai/business
