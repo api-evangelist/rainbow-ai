@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/rainbow-ai-nowcast-openapi.yml, openapi/rainbow-ai-tiles-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: ApiKeyHeader
+  type: apiKey
+  in: header
+  parameter: Ocp-Apim-Subscription-Key
+  description: API key passed in the Ocp-Apim-Subscription-Key header
+  sources:
+  - openapi/rainbow-ai-nowcast-openapi.yml
+  - openapi/rainbow-ai-tiles-openapi.yml
+- name: ApiKeyQuery
+  type: apiKey
+  in: query
+  parameter: token
+  description: API key passed as a token query parameter
+  sources:
+  - openapi/rainbow-ai-nowcast-openapi.yml
+  - openapi/rainbow-ai-tiles-openapi.yml

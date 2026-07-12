@@ -70,6 +70,10 @@ apis:
       - type: Pricing
         url: https://www.rainbow.ai/business
 common:
+  - type: DomainSecurity
+    url: security/rainbow-ai-domain-security.yml
+  - type: Authentication
+    url: authentication/rainbow-ai-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/Rainbow-AI
   - type: LinkedIn
