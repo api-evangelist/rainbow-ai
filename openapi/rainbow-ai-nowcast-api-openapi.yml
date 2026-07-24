@@ -1,0 +1,163 @@
+openapi: 3.0.3
+info:
+  title: Rainbow.AI Nowcast API
+  description: The Rainbow.AI Nowcast API delivers hyperlocal precipitation forecasts with minute-by-minute predictions for the next 4 hours at 1 km spatial resolution. It returns precipitation type and intensity for any global coordinate, updated every 10 minutes. Authentication is via API key in header or query parameter.
+  version: '1.0'
+  termsOfService: https://developer.rainbow.ai/terms-of-service
+  contact:
+    url: https://developer.rainbow.ai/
+  x-tags:
+  - Weather
+  - Nowcast
+  - Precipitation
+  - Forecasting
+servers:
+- url: https://api.rainbow.ai/v1
+  description: Rainbow.AI Production API
+security:
+- ApiKeyHeader: []
+- ApiKeyQuery: []
+tags:
+- name: Nowcast
+  description: Minute-by-minute precipitation forecasting operations
+paths:
+  /weather/nowcast:
+    get:
+      operationId: getNowcast
+      summary: Get Precipitation Nowcast
+      description: Returns minute-by-minute precipitation forecast for the next 4 hours at a given latitude and longitude, at 1 km spatial resolution. Data is updated every 10 minutes.
+      tags:
+      - Nowcast
+      parameters:
+      - name: lat
+        in: query
+        required: true
+        description: Latitude of the location (-90 to 90)
+        schema:
+          type: number
+          format: float
+          minimum: -90
+          maximum: 90
+          example: 40.7128
+      - name: lon
+        in: query
+        required: true
+        description: Longitude of the location (-180 to 180)
+        schema:
+          type: number
+          format: float
+          minimum: -180
+          maximum: 180
+          example: -74.006
+      - name: timezone
+        in: query
+        required: false
+        description: IANA timezone identifier for timestamp formatting (e.g., America/New_York)
+        schema:
+          type: string
+          example: America/New_York
+      responses:
+        '200':
+          description: Successful nowcast forecast response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NowcastResponse'
+        '401':
+          description: Unauthorized - missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity - invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests - rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Location:
+      type: object
+      description: Geographic location coordinates
+      properties:
+        lat:
+          type: number
+          format: float
+          description: Latitude (-90 to 90)
+        lon:
+          type: number
+          format: float
+          description: Longitude (-180 to 180)
+    ForecastPoint:
+      type: object
+      description: A single minute-by-minute precipitation forecast data point
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp for this forecast minute
+        precipitation_type:
+          type: string
+          description: Type of precipitation
+          enum:
+          - none
+          - rain
+          - snow
+          - sleet
+          - freezing_rain
+        precipitation_intensity:
+          type: number
+          format: float
+          description: Precipitation intensity in mm/hour
+        probability:
+          type: number
+          format: float
+          description: Probability of precipitation (0.0 to 1.0)
+          minimum: 0
+          maximum: 1
+    NowcastResponse:
+      type: object
+      description: Minute-by-minute precipitation forecast for the next 4 hours
+      properties:
+        location:
+          $ref: '#/components/schemas/Location'
+        forecasts:
+          type: array
+          description: Array of minute-by-minute precipitation forecasts
+          items:
+            $ref: '#/components/schemas/ForecastPoint'
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp of the last data update
+    ErrorResponse:
+      type: object
+      description: Error response object
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        status:
+          type: integer
+          description: HTTP status code
+  securitySchemes:
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+      description: API key passed in the Ocp-Apim-Subscription-Key header
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: token
+      description: API key passed as a token query parameter

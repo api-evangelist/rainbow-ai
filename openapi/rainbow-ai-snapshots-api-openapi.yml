@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: Rainbow.AI Nowcast Snapshots API
+  description: The Rainbow.AI Nowcast API delivers hyperlocal precipitation forecasts with minute-by-minute predictions for the next 4 hours at 1 km spatial resolution. It returns precipitation type and intensity for any global coordinate, updated every 10 minutes. Authentication is via API key in header or query parameter.
+  version: '1.0'
+  termsOfService: https://developer.rainbow.ai/terms-of-service
+  contact:
+    url: https://developer.rainbow.ai/
+  x-tags:
+  - Weather
+  - Nowcast
+  - Precipitation
+  - Forecasting
+servers:
+- url: https://api.rainbow.ai/v1
+  description: Rainbow.AI Production API
+security:
+- ApiKeyHeader: []
+- ApiKeyQuery: []
+tags:
+- name: Snapshots
+  description: Map snapshot and static image operations
+paths:
+  /map/snapshot:
+    get:
+      operationId: getMapSnapshot
+      summary: Get Map Snapshot
+      description: Returns a static precipitation map image for a given bounding box, useful for generating weather map previews or thumbnails without a full mapping library integration.
+      tags:
+      - Snapshots
+      parameters:
+      - name: bbox
+        in: query
+        required: true
+        description: 'Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat'
+        schema:
+          type: string
+          example: -74.1,40.6,-73.9,40.8
+      - name: width
+        in: query
+        required: false
+        description: Output image width in pixels
+        schema:
+          type: integer
+          minimum: 64
+          maximum: 1024
+          default: 256
+      - name: height
+        in: query
+        required: false
+        description: Output image height in pixels
+        schema:
+          type: integer
+          minimum: 64
+          maximum: 1024
+          default: 256
+      - name: timestamp
+        in: query
+        required: false
+        description: ISO 8601 timestamp for the desired forecast time
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Static PNG precipitation map snapshot
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized - missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity - invalid bounding box or parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests - rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response object
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        status:
+          type: integer
+          description: HTTP status code
+  securitySchemes:
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+      description: API key passed in the Ocp-Apim-Subscription-Key header
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: token
+      description: API key passed as a token query parameter
