@@ -1,0 +1,259 @@
+openapi: 3.0.3
+info:
+  title: Rainbow.AI Tiles API
+  description: >-
+    The Rainbow.AI Tiles API provides global cloud coverage map tiles with
+    high-resolution weather visualization data (256x256 tiles) delivered via
+    XYZ CDN. Supports real-time and forecasted precipitation layers, updated
+    every 10 minutes. Ideal for map-based applications, dashboards, and
+    spatial interfaces.
+  version: '1.0'
+  termsOfService: https://developer.rainbow.ai/terms-of-service
+  contact:
+    url: https://developer.rainbow.ai/
+  x-tags:
+    - Weather
+    - Tiles
+    - Mapping
+    - Visualization
+    - Geospatial
+servers:
+  - url: https://api.rainbow.ai/v1
+    description: Rainbow.AI Production API
+
+security:
+  - ApiKeyHeader: []
+  - ApiKeyQuery: []
+
+tags:
+  - name: Tiles
+    description: Weather map tile retrieval operations
+  - name: Snapshots
+    description: Map snapshot and static image operations
+
+paths:
+  /map/tile/{z}/{x}/{y}:
+    get:
+      operationId: getMapTile
+      summary: Get Weather Map Tile
+      description: >-
+        Returns a 256x256 PNG weather map tile at the specified zoom level and
+        tile coordinates using the XYZ tiling scheme. Tiles show precipitation
+        forecasts and can be overlaid on any mapping library (Leaflet, Mapbox,
+        Google Maps, etc.).
+      tags:
+        - Tiles
+      parameters:
+        - name: z
+          in: path
+          required: true
+          description: Zoom level (0-18)
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 18
+            example: 10
+        - name: x
+          in: path
+          required: true
+          description: Tile X coordinate
+          schema:
+            type: integer
+            example: 301
+        - name: y
+          in: path
+          required: true
+          description: Tile Y coordinate
+          schema:
+            type: integer
+            example: 385
+        - name: timestamp
+          in: query
+          required: false
+          description: >-
+            ISO 8601 timestamp for the desired forecast time. If omitted,
+            returns the current precipitation tile.
+          schema:
+            type: string
+            format: date-time
+            example: '2026-05-02T12:00:00Z'
+        - name: layer
+          in: query
+          required: false
+          description: The weather layer type to render
+          schema:
+            type: string
+            enum:
+              - precipitation
+              - radar
+            default: precipitation
+      responses:
+        '200':
+          description: PNG weather map tile image
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized - missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Tile not found for the given coordinates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests - rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /map/snapshot:
+    get:
+      operationId: getMapSnapshot
+      summary: Get Map Snapshot
+      description: >-
+        Returns a static precipitation map image for a given bounding box,
+        useful for generating weather map previews or thumbnails without a full
+        mapping library integration.
+      tags:
+        - Snapshots
+      parameters:
+        - name: bbox
+          in: query
+          required: true
+          description: >-
+            Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat
+          schema:
+            type: string
+            example: '-74.1,40.6,-73.9,40.8'
+        - name: width
+          in: query
+          required: false
+          description: Output image width in pixels
+          schema:
+            type: integer
+            minimum: 64
+            maximum: 1024
+            default: 256
+        - name: height
+          in: query
+          required: false
+          description: Output image height in pixels
+          schema:
+            type: integer
+            minimum: 64
+            maximum: 1024
+            default: 256
+        - name: timestamp
+          in: query
+          required: false
+          description: ISO 8601 timestamp for the desired forecast time
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Static PNG precipitation map snapshot
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized - missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Unprocessable Entity - invalid bounding box or parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too Many Requests - rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /map/timestamps:
+    get:
+      operationId: getAvailableTimestamps
+      summary: Get Available Tile Timestamps
+      description: >-
+        Returns a list of available timestamps for which weather tile data is
+        available. Use this to build time-slider controls for animated weather
+        visualizations.
+      tags:
+        - Tiles
+      responses:
+        '200':
+          description: List of available tile timestamps
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TimestampsResponse'
+        '401':
+          description: Unauthorized - missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: Ocp-Apim-Subscription-Key
+      description: API key passed in the Ocp-Apim-Subscription-Key header
+    ApiKeyQuery:
+      type: apiKey
+      in: query
+      name: token
+      description: API key passed as a token query parameter
+
+  schemas:
+    TimestampsResponse:
+      type: object
+      description: Available tile timestamps for weather data
+      properties:
+        past:
+          type: array
+          description: Available historical radar timestamps
+          items:
+            type: string
+            format: date-time
+        future:
+          type: array
+          description: Available forecast timestamps (up to 4 hours ahead)
+          items:
+            type: string
+            format: date-time
+        updated_at:
+          type: string
+          format: date-time
+          description: When this list was last updated
+
+    ErrorResponse:
+      type: object
+      description: Error response object
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        status:
+          type: integer
+          description: HTTP status code

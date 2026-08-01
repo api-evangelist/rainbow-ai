@@ -1,0 +1,372 @@
+{
+  "info": {
+    "_postman_id": "e5fd7228-00d5-4ae3-808d-c850c8c2f228",
+    "name": "Rainbow.AI Nowcast Snapshots API",
+    "description": "The Rainbow.AI Nowcast API delivers hyperlocal precipitation forecasts with minute-by-minute predictions for the next 4 hours at 1 km spatial resolution. It returns precipitation type and intensity for any global coordinate, updated every 10 minutes. Authentication is via API key in header or query parameter.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:38.000Z",
+    "updatedAt": "2026-07-28T02:42:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e5fd7228-00d5-4ae3-808d-c850c8c2f228"
+  },
+  "item": [
+    {
+      "name": "map",
+      "item": [
+        {
+          "name": "snapshot",
+          "item": [
+            {
+              "name": "Get Map Snapshot",
+              "id": "a9291a08-94fd-4399-962c-41b9a187267b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/map/snapshot?bbox=<string>&width=256&height=256&timestamp=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "map",
+                    "snapshot"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Output image width in pixels",
+                      "key": "width",
+                      "value": "256"
+                    },
+                    {
+                      "description": "Output image height in pixels",
+                      "key": "height",
+                      "value": "256"
+                    },
+                    {
+                      "description": "ISO 8601 timestamp for the desired forecast time",
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                },
+                "description": "Returns a static precipitation map image for a given bounding box, useful for generating weather map previews or thumbnails without a full mapping library integration."
+              },
+              "response": [
+                {
+                  "id": "f29fdd69-9194-42c8-bd61-8a00e2acde33",
+                  "name": "Static PNG precipitation map snapshot",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "image/png"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/map/snapshot?bbox=<string>&width=256&height=256&timestamp=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "map",
+                        "snapshot"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat",
+                          "key": "bbox",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Output image width in pixels",
+                          "key": "width",
+                          "value": "256"
+                        },
+                        {
+                          "description": "Output image height in pixels",
+                          "key": "height",
+                          "value": "256"
+                        },
+                        {
+                          "description": "ISO 8601 timestamp for the desired forecast time",
+                          "key": "timestamp",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "image/png"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<binary>",
+                  "createdAt": "2026-07-28T02:42:39.000Z",
+                  "updatedAt": "2026-07-28T02:42:39.000Z",
+                  "uid": "35240-f29fdd69-9194-42c8-bd61-8a00e2acde33"
+                },
+                {
+                  "id": "e2feff73-3e93-4042-bba1-02c56fa8dfc0",
+                  "name": "Unauthorized - missing or invalid API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/map/snapshot?bbox=<string>&width=256&height=256&timestamp=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "map",
+                        "snapshot"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat",
+                          "key": "bbox",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Output image width in pixels",
+                          "key": "width",
+                          "value": "256"
+                        },
+                        {
+                          "description": "Output image height in pixels",
+                          "key": "height",
+                          "value": "256"
+                        },
+                        {
+                          "description": "ISO 8601 timestamp for the desired forecast time",
+                          "key": "timestamp",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:42:39.000Z",
+                  "updatedAt": "2026-07-28T02:42:39.000Z",
+                  "uid": "35240-e2feff73-3e93-4042-bba1-02c56fa8dfc0"
+                },
+                {
+                  "id": "94967ccd-fa48-4767-a00f-9fc59319f48f",
+                  "name": "Unprocessable Entity - invalid bounding box or parameters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/map/snapshot?bbox=<string>&width=256&height=256&timestamp=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "map",
+                        "snapshot"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat",
+                          "key": "bbox",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Output image width in pixels",
+                          "key": "width",
+                          "value": "256"
+                        },
+                        {
+                          "description": "Output image height in pixels",
+                          "key": "height",
+                          "value": "256"
+                        },
+                        {
+                          "description": "ISO 8601 timestamp for the desired forecast time",
+                          "key": "timestamp",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:42:39.000Z",
+                  "updatedAt": "2026-07-28T02:42:39.000Z",
+                  "uid": "35240-94967ccd-fa48-4767-a00f-9fc59319f48f"
+                },
+                {
+                  "id": "7627e2f5-1e65-41d7-86ea-4dcebf55b269",
+                  "name": "Too Many Requests - rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/map/snapshot?bbox=<string>&width=256&height=256&timestamp=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "map",
+                        "snapshot"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Bounding box as comma-separated values: minLon,minLat,maxLon,maxLat",
+                          "key": "bbox",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Output image width in pixels",
+                          "key": "width",
+                          "value": "256"
+                        },
+                        {
+                          "description": "Output image height in pixels",
+                          "key": "height",
+                          "value": "256"
+                        },
+                        {
+                          "description": "ISO 8601 timestamp for the desired forecast time",
+                          "key": "timestamp",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:42:39.000Z",
+                  "updatedAt": "2026-07-28T02:42:39.000Z",
+                  "uid": "35240-7627e2f5-1e65-41d7-86ea-4dcebf55b269"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:38.000Z",
+              "updatedAt": "2026-07-28T02:42:38.000Z",
+              "uid": "35240-a9291a08-94fd-4399-962c-41b9a187267b"
+            }
+          ],
+          "id": "385b3242-0ea0-41dd-9f9e-9f56aa7ce7ef",
+          "createdAt": "2026-07-28T02:42:38.000Z",
+          "updatedAt": "2026-07-28T02:42:38.000Z",
+          "uid": "35240-385b3242-0ea0-41dd-9f9e-9f56aa7ce7ef"
+        }
+      ],
+      "id": "0fe19b9e-9e73-42b8-9561-df3ad3a75b29",
+      "createdAt": "2026-07-28T02:42:38.000Z",
+      "updatedAt": "2026-07-28T02:42:38.000Z",
+      "uid": "35240-0fe19b9e-9e73-42b8-9561-df3ad3a75b29"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.rainbow.ai/v1"
+    }
+  ]
+}

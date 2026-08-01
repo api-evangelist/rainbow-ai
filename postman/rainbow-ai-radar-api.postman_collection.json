@@ -1,0 +1,267 @@
+{
+  "info": {
+    "_postman_id": "c584b0d9-9217-4941-a441-8d24a2993d49",
+    "name": "Rainbow.AI Nowcast Radar API",
+    "description": "The Rainbow.AI Nowcast API delivers hyperlocal precipitation forecasts with minute-by-minute predictions for the next 4 hours at 1 km spatial resolution. It returns precipitation type and intensity for any global coordinate, updated every 10 minutes. Authentication is via API key in header or query parameter.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:37.000Z",
+    "updatedAt": "2026-07-28T02:42:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c584b0d9-9217-4941-a441-8d24a2993d49"
+  },
+  "item": [
+    {
+      "name": "weather",
+      "item": [
+        {
+          "name": "radar",
+          "item": [
+            {
+              "name": "Get Radar Data",
+              "id": "a9b8816b-e5f7-4831-9450-dea4f3b5e98a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/weather/radar?lat=<float>&lon=<float>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "weather",
+                    "radar"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude of the location (-90 to 90)",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude of the location (-180 to 180)",
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ]
+                },
+                "description": "Returns real-time and historical radar data for a specific location, providing precipitation intensity and type information from radar observations."
+              },
+              "response": [
+                {
+                  "id": "0b8562fe-ed26-4813-96db-c6cc70e9a5a6",
+                  "name": "Successful radar data response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/weather/radar?lat=<float>&lon=<float>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "weather",
+                        "radar"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude of the location (-90 to 90)",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude of the location (-180 to 180)",
+                          "key": "lon",
+                          "value": "<float>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"location\": {\n    \"lat\": \"<float>\",\n    \"lon\": \"<float>\"\n  },\n  \"radar_data\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"reflectivity\": \"<float>\",\n      \"precipitation_type\": \"snow\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"reflectivity\": \"<float>\",\n      \"precipitation_type\": \"mixed\"\n    }\n  ],\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:42:38.000Z",
+                  "updatedAt": "2026-07-28T02:42:38.000Z",
+                  "uid": "35240-0b8562fe-ed26-4813-96db-c6cc70e9a5a6"
+                },
+                {
+                  "id": "668830c0-5d28-4eb5-8a60-7c37a7d72943",
+                  "name": "Unauthorized - missing or invalid API key",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/weather/radar?lat=<float>&lon=<float>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "weather",
+                        "radar"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude of the location (-90 to 90)",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude of the location (-180 to 180)",
+                          "key": "lon",
+                          "value": "<float>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:42:38.000Z",
+                  "updatedAt": "2026-07-28T02:42:38.000Z",
+                  "uid": "35240-668830c0-5d28-4eb5-8a60-7c37a7d72943"
+                },
+                {
+                  "id": "3e2ca33f-abd9-49a3-925c-2b1da355eb7d",
+                  "name": "Too Many Requests - rate limit exceeded",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Ocp-Apim-Subscription-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/weather/radar?lat=<float>&lon=<float>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "weather",
+                        "radar"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude of the location (-90 to 90)",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude of the location (-180 to 180)",
+                          "key": "lon",
+                          "value": "<float>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T02:42:38.000Z",
+                  "updatedAt": "2026-07-28T02:42:38.000Z",
+                  "uid": "35240-3e2ca33f-abd9-49a3-925c-2b1da355eb7d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:38.000Z",
+              "updatedAt": "2026-07-28T02:42:38.000Z",
+              "uid": "35240-a9b8816b-e5f7-4831-9450-dea4f3b5e98a"
+            }
+          ],
+          "id": "7255d2fe-cd84-4ab8-81b6-46f7145f6884",
+          "createdAt": "2026-07-28T02:42:38.000Z",
+          "updatedAt": "2026-07-28T02:42:38.000Z",
+          "uid": "35240-7255d2fe-cd84-4ab8-81b6-46f7145f6884"
+        }
+      ],
+      "id": "510e03dc-12ce-48e6-9761-8c55a351d54a",
+      "createdAt": "2026-07-28T02:42:38.000Z",
+      "updatedAt": "2026-07-28T02:42:38.000Z",
+      "uid": "35240-510e03dc-12ce-48e6-9761-8c55a351d54a"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Ocp-Apim-Subscription-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.rainbow.ai/v1"
+    }
+  ]
+}

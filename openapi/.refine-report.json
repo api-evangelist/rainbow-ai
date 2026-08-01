@@ -1,0 +1,20 @@
+{
+  "provider": "rainbow-ai",
+  "sources": [
+    "rainbow-ai-nowcast-api-openapi.yml",
+    "rainbow-ai-radar-api-openapi.yml",
+    "rainbow-ai-snapshots-api-openapi.yml",
+    "rainbow-ai-tiles-api-openapi.yml"
+  ],
+  "outputs": [
+    "rainbow-ai-nowcast-api-openapi.yml",
+    "rainbow-ai-radar-api-openapi.yml",
+    "rainbow-ai-snapshots-api-openapi.yml",
+    "rainbow-ai-tiles-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
