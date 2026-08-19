@@ -32,7 +32,7 @@ tags:
 created: '2025-02-06'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/rainbow-ai/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: rainbow-ai:rainbow-ai-nowcast-api
   name: Rainbow.AI Nowcast API
