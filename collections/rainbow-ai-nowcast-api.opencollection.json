@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rainbow.AI Nowcast API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Nowcast",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Precipitation Nowcast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rainbow.ai/v1/weather/nowcast",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the location (-90 to 90)"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the location (-180 to 180)"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query",
+                "description": "IANA timezone identifier for timestamp formatting (e.g., America/New_York)"
+              }
+            ]
+          },
+          "docs": "Returns minute-by-minute precipitation forecast for the next 4 hours at a given latitude and longitude, at 1 km spatial resolution. Data is updated every 10 minutes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

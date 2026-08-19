@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Rainbow.AI Nowcast Radar API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Ocp-Apim-Subscription-Key",
+      "value": "{{Ocp-Apim-Subscription-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Radar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Radar Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rainbow.ai/v1/weather/radar",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the location (-90 to 90)"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the location (-180 to 180)"
+              }
+            ]
+          },
+          "docs": "Returns real-time and historical radar data for a specific location, providing precipitation intensity and type information from radar observations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
