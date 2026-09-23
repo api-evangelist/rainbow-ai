@@ -1,10 +1,8 @@
 {
   "provider": "rainbow-ai",
   "sources": [
-    "rainbow-ai-nowcast-api-openapi.yml",
-    "rainbow-ai-radar-api-openapi.yml",
-    "rainbow-ai-snapshots-api-openapi.yml",
-    "rainbow-ai-tiles-api-openapi.yml"
+    "_original/rainbow-ai-nowcast-openapi.yml",
+    "_original/rainbow-ai-tiles-openapi.yml"
   ],
   "outputs": [
     "rainbow-ai-nowcast-api-openapi.yml",
@@ -15,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "rainbow-ai-nowcast-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "rainbow-ai-tiles-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "rainbow-ai-nowcast-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rainbow-ai-radar-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rainbow-ai-snapshots-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "rainbow-ai-tiles-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

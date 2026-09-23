@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Rainbow.AI Nowcast Radar API
   description: The Rainbow.AI Nowcast API delivers hyperlocal precipitation forecasts with minute-by-minute predictions for the next 4 hours at 1 km spatial resolution. It returns precipitation type and intensity for any global coordinate, updated every 10 minutes. Authentication is via API key in header or query parameter.
@@ -70,6 +70,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    Location:
+      type: object
+      description: Geographic location coordinates
+      properties:
+        lat:
+          type: number
+          format: float
+          description: Latitude (-90 to 90)
+        lon:
+          type: number
+          format: float
+          description: Longitude (-180 to 180)
     RadarPoint:
       type: object
       description: A single radar observation data point
@@ -90,18 +102,6 @@ components:
           - rain
           - snow
           - mixed
-    Location:
-      type: object
-      description: Geographic location coordinates
-      properties:
-        lat:
-          type: number
-          format: float
-          description: Latitude (-90 to 90)
-        lon:
-          type: number
-          format: float
-          description: Longitude (-180 to 180)
     RadarResponse:
       type: object
       description: Real-time radar data for a location
