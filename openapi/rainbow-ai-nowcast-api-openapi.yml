@@ -83,6 +83,46 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    Location:
+      type: object
+      description: Geographic location coordinates
+      properties:
+        lat:
+          type: number
+          format: float
+          description: Latitude (-90 to 90)
+        lon:
+          type: number
+          format: float
+          description: Longitude (-180 to 180)
+    NowcastResponse:
+      type: object
+      description: Minute-by-minute precipitation forecast for the next 4 hours
+      properties:
+        location:
+          $ref: '#/components/schemas/Location'
+        forecasts:
+          type: array
+          description: Array of minute-by-minute precipitation forecasts
+          items:
+            $ref: '#/components/schemas/ForecastPoint'
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp of the last data update
+    ErrorResponse:
+      type: object
+      description: Error response object
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        status:
+          type: integer
+          description: HTTP status code
     ForecastPoint:
       type: object
       description: A single minute-by-minute precipitation forecast data point
@@ -110,46 +150,6 @@ components:
           description: Probability of precipitation (0.0 to 1.0)
           minimum: 0
           maximum: 1
-    Location:
-      type: object
-      description: Geographic location coordinates
-      properties:
-        lat:
-          type: number
-          format: float
-          description: Latitude (-90 to 90)
-        lon:
-          type: number
-          format: float
-          description: Longitude (-180 to 180)
-    ErrorResponse:
-      type: object
-      description: Error response object
-      properties:
-        error:
-          type: string
-          description: Error type identifier
-        message:
-          type: string
-          description: Human-readable error message
-        status:
-          type: integer
-          description: HTTP status code
-    NowcastResponse:
-      type: object
-      description: Minute-by-minute precipitation forecast for the next 4 hours
-      properties:
-        location:
-          $ref: '#/components/schemas/Location'
-        forecasts:
-          type: array
-          description: Array of minute-by-minute precipitation forecasts
-          items:
-            $ref: '#/components/schemas/ForecastPoint'
-        updated_at:
-          type: string
-          format: date-time
-          description: Timestamp of the last data update
   securitySchemes:
     ApiKeyHeader:
       type: apiKey

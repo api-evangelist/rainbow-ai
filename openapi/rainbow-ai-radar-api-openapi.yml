@@ -82,6 +82,34 @@ components:
           type: number
           format: float
           description: Longitude (-180 to 180)
+    ErrorResponse:
+      type: object
+      description: Error response object
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        status:
+          type: integer
+          description: HTTP status code
+    RadarResponse:
+      type: object
+      description: Real-time radar data for a location
+      properties:
+        location:
+          $ref: '#/components/schemas/Location'
+        radar_data:
+          type: array
+          description: Array of radar observations
+          items:
+            $ref: '#/components/schemas/RadarPoint'
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp of the last radar update
     RadarPoint:
       type: object
       description: A single radar observation data point
@@ -102,34 +130,6 @@ components:
           - rain
           - snow
           - mixed
-    RadarResponse:
-      type: object
-      description: Real-time radar data for a location
-      properties:
-        location:
-          $ref: '#/components/schemas/Location'
-        radar_data:
-          type: array
-          description: Array of radar observations
-          items:
-            $ref: '#/components/schemas/RadarPoint'
-        updated_at:
-          type: string
-          format: date-time
-          description: Timestamp of the last radar update
-    ErrorResponse:
-      type: object
-      description: Error response object
-      properties:
-        error:
-          type: string
-          description: Error type identifier
-        message:
-          type: string
-          description: Human-readable error message
-        status:
-          type: integer
-          description: HTTP status code
   securitySchemes:
     ApiKeyHeader:
       type: apiKey
