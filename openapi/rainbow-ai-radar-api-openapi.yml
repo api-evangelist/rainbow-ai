@@ -70,6 +70,26 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    RadarPoint:
+      type: object
+      description: A single radar observation data point
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp for this radar observation
+        reflectivity:
+          type: number
+          format: float
+          description: Radar reflectivity in dBZ
+        precipitation_type:
+          type: string
+          description: Detected precipitation type
+          enum:
+          - none
+          - rain
+          - snow
+          - mixed
     Location:
       type: object
       description: Geographic location coordinates
@@ -110,26 +130,6 @@ components:
           type: string
           format: date-time
           description: Timestamp of the last radar update
-    RadarPoint:
-      type: object
-      description: A single radar observation data point
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-          description: ISO 8601 timestamp for this radar observation
-        reflectivity:
-          type: number
-          format: float
-          description: Radar reflectivity in dBZ
-        precipitation_type:
-          type: string
-          description: Detected precipitation type
-          enum:
-          - none
-          - rain
-          - snow
-          - mixed
   securitySchemes:
     ApiKeyHeader:
       type: apiKey

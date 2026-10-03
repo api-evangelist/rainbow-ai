@@ -83,6 +83,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      description: Error response object
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        status:
+          type: integer
+          description: HTTP status code
     Location:
       type: object
       description: Geographic location coordinates
@@ -110,19 +123,6 @@ components:
           type: string
           format: date-time
           description: Timestamp of the last data update
-    ErrorResponse:
-      type: object
-      description: Error response object
-      properties:
-        error:
-          type: string
-          description: Error type identifier
-        message:
-          type: string
-          description: Human-readable error message
-        status:
-          type: integer
-          description: HTTP status code
     ForecastPoint:
       type: object
       description: A single minute-by-minute precipitation forecast data point

@@ -119,19 +119,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response object
-      properties:
-        error:
-          type: string
-          description: Error type identifier
-        message:
-          type: string
-          description: Human-readable error message
-        status:
-          type: integer
-          description: HTTP status code
     TimestampsResponse:
       type: object
       description: Available tile timestamps for weather data
@@ -152,6 +139,19 @@ components:
           type: string
           format: date-time
           description: When this list was last updated
+    ErrorResponse:
+      type: object
+      description: Error response object
+      properties:
+        error:
+          type: string
+          description: Error type identifier
+        message:
+          type: string
+          description: Human-readable error message
+        status:
+          type: integer
+          description: HTTP status code
   securitySchemes:
     ApiKeyHeader:
       type: apiKey
