@@ -1,4 +1,4 @@
-# Rainbow.AI (rainbow-ai)
+# Rainbow.AI
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,95 +66,170 @@
 
 Rainbow.AI provides hyperlocal precipitation forecasting APIs that deliver minute-by-minute rain and snow predictions at 1 km resolution, helping businesses and developers optimize weather-sensitive operations with accurate nowcast and map tile data globally.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/rainbow-ai/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/rainbow-ai/refs/heads/main/apis.yml)
+**Areas:** Weather · Precipitation · Forecasting · Nowcast · Radar · Tiles · Geospatial
 
-## Scope
+## Rainbow.AI on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Rainbow.AI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/rainbow-ai/](https://apis.io/providers/rainbow-ai/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Weather
-- Precipitation
-- Forecasting
-- Nowcast
-- Radar
-- Tiles
-- Geospatial
+- [Rainbow.AI Nowcast API](https://apis.io/apis/rainbow-ai/rainbow-ai-nowcast-api/) — Minute-by-minute precipitation forecasting operations
+- [Rainbow.AI Radar API](https://apis.io/apis/rainbow-ai/rainbow-ai-radar-api/) — Real-time radar data operations
+- [Rainbow.AI Snapshots API](https://apis.io/apis/rainbow-ai/rainbow-ai-snapshots-api/) — Map snapshot and static image operations
+- [Rainbow.AI Tiles API](https://apis.io/apis/rainbow-ai/rainbow-ai-tiles-api/) — Weather map tile retrieval operations
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-06
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Rainbow.AI Nowcast API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Nowcast API delivers hyperlocal precipitation forecasts with minute-by-minute predictions for the next 4 hours at 1 km spatial resolution. It returns precipitation type and intensity for any global coordinate, updated every 10 minutes.
+- [Rainbow Ai Agentic Access](https://apis.io/agentic-access/rainbow-ai/rainbow-ai-agentic-access/)
 
-- **Human URL:** [https://doc.rainbow.ai](https://doc.rainbow.ai)
-- **Base URL:** `https://api.rainbow.ai/v1`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- Weather
-- Nowcast
-- Precipitation
-- Forecasting
+- [Rainbow.AI Nowcast Response](https://apis.io/schemas/rainbow-ai/rainbow-ai-nowcast-response/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://doc.rainbow.ai)
-- [OpenAPI](openapi/rainbow-ai-nowcast-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rainbow-ai-nowcast.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rainbow-ai-nowcast.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/rainbow-ai-nowcast-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/rainbow-ai-nowcast-structure.json)
-- [Sign Up](https://developer.rainbow.ai/)
-- [Pricing](https://www.rainbow.ai/business)
+Data models expressed in JSON Structure.
 
-### Rainbow.AI Tiles API
+- [Rainbow Ai Nowcast Structure](https://apis.io/json-structure/rainbow-ai/rainbow-ai-nowcast-structure/)
 
-The Tiles API provides global cloud coverage map tiles with high-resolution weather visualization data (256x256 tiles) delivered via XYZ CDN. Supports real-time and forecasted precipitation layers, updated every 10 minutes.
+#### JSON-LD (1)
 
-- **Human URL:** [https://doc.rainbow.ai](https://doc.rainbow.ai)
-- **Base URL:** `https://api.rainbow.ai/v1`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Rainbow Ai Context](https://apis.io/jsonld/rainbow-ai/rainbow-ai-context/)
 
-- Weather
-- Tiles
-- Mapping
-- Visualization
-- Geospatial
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://doc.rainbow.ai)
-- [OpenAPI](openapi/rainbow-ai-tiles-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/rainbow-ai-tiles.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rainbow-ai-tiles.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Sign Up](https://developer.rainbow.ai/)
-- [Pricing](https://www.rainbow.ai/business)
+- [Rainbow.AI Vocabulary](https://apis.io/vocabularies/rainbow-ai/rainbow-ai-vocabulary/)
 
-## Common Properties
+#### Examples (3)
 
-- [GitHub Organization](https://github.com/Rainbow-AI)
-- [LinkedIn](https://www.linkedin.com/company/rainbowai)
+Example requests and responses.
+
+- [Rainbow Ai Get Map Tile Example](https://apis.io/examples/rainbow-ai/rainbow-ai-get-map-tile-example/)
+- [Rainbow Ai Get Nowcast Example](https://apis.io/examples/rainbow-ai/rainbow-ai-get-nowcast-example/)
+- [Rainbow Ai Get Radar Data Example](https://apis.io/examples/rainbow-ai/rainbow-ai-get-radar-data-example/)
+
+#### Collections (10)
+
+Postman and Open Collection request collections.
+
+- [Rainbow.AI Nowcast API](https://apis.io/collections/rainbow-ai/open-rainbow-ai-nowcast/)
+- [Rainbow.AI Nowcast API](https://apis.io/collections/rainbow-ai/open-rainbow-ai-nowcast-api/)
+- [Rainbow.AI Nowcast Radar API](https://apis.io/collections/rainbow-ai/open-rainbow-ai-radar-api/)
+- [Rainbow.AI Nowcast Snapshots API](https://apis.io/collections/rainbow-ai/open-rainbow-ai-snapshots-api/)
+- [Rainbow.AI Tiles API](https://apis.io/collections/rainbow-ai/open-rainbow-ai-tiles/)
+- [Rainbow.AI Nowcast Tiles API](https://apis.io/collections/rainbow-ai/open-rainbow-ai-tiles-api/)
+- [Rainbow.AI Nowcast API](https://apis.io/collections/rainbow-ai/postman-rainbow-ai-nowcast-api/)
+- [Rainbow.AI Nowcast Radar API](https://apis.io/collections/rainbow-ai/postman-rainbow-ai-radar-api/)
+- [Rainbow.AI Nowcast Snapshots API](https://apis.io/collections/rainbow-ai/postman-rainbow-ai-snapshots-api/)
+- [Rainbow.AI Nowcast Tiles API](https://apis.io/collections/rainbow-ai/postman-rainbow-ai-tiles-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Rainbow.AI — jsonschema rules](https://apis.io/rules/rainbow-ai/rainbow-ai-jsonschema-spectral-rules/)
+- [Rainbow.AI API Rules](https://apis.io/rules/rainbow-ai/rainbow-ai-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Rainbow Ai Authentication](https://apis.io/security/rainbow-ai/rainbow-ai-authentication/)
+- [Rainbow Ai Domain Security](https://apis.io/security/rainbow-ai/rainbow-ai-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Rainbow Ai Plans Pricing](https://apis.io/plans/rainbow-ai/rainbow-ai-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rainbow Ai Rate Limits](https://apis.io/rate-limits/rainbow-ai/rainbow-ai-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Rainbow Ai Finops](https://apis.io/finops/rainbow-ai/rainbow-ai-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.rainbow.ai)
 - [Documentation](https://doc.rainbow.ai)
-- [Sign Up](https://developer.rainbow.ai/)
 - [Pricing](https://www.rainbow.ai/business)
-- [Terms of Service](https://developer.rainbow.ai/terms-of-service)
-- [Status Page](https://status.rainbow.ai)
-- [Spectral Rules](rules/rainbow-ai-rules.yml)
-- [JSON-LD](json-ld/rainbow-ai-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Vocabulary](vocabulary/rainbow-ai-vocabulary.yml)
+- [Terms of service](https://developer.rainbow.ai/terms-of-service)
+- [GitHub](https://github.com/Rainbow-AI)
+- [Status](https://status.rainbow.ai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 41.9** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 59.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 22.6 |
+| Access clarity | 42.1 |
+
+**Agent readiness 29.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/rainbow-ai/](https://apis.io/providers/rainbow-ai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Rainbow.AI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/rainbow-ai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
